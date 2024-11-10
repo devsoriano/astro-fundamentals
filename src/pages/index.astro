@@ -1,16 +1,35 @@
 ---
-
+// Server Only
+const name = 'Rafael Soriano Ramírez';
+const title = 'Home page';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <h1>{name}</h1>
+
+    <p>Momento actual: {new Date().toLocaleTimeString()}</p>
+    <p id="current-time">Momento actual real:</p>
+  </body>
+  <footer>Año: 2023</footer>
+
+  <script>
+    // client only
+    const footer = document.querySelector('footer') as HTMLElement;
+    const currentTimeParagrah = document.querySelector(
+      '#current-time',
+    ) as HTMLParagraphElement;
+
+    const currentYear: number = new Date().getFullYear();
+
+    footer.innerText = `Año: ${currentYear}`;
+    currentTimeParagrah.innerText = `Momento actual real: ${new Date().toLocaleTimeString()}`;
+  </script>
 </html>
